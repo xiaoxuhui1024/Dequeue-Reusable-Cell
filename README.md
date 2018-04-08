@@ -1,2 +1,11 @@
 # Dequeue-Reusable-Cell
 UITableViewCell的重用机制
+
+### UITableView继承自UIScrollview,是苹果为我们封装好的一个基于scroll的控件。上面主要是一个个的UITableViewCell,可以让UITableViewCell响应一些点击事件，也可以在UITableViewCell中加入UITextField或者UITextView等子视图，使得可以在cell上进行文字编辑。
+
+### UITableView中的cell可以有很多，一般会通过重用cell来达到节省内存的目的:通过为每个cell指定一个重用标识符(reuseIdentifier),即指定了单元格的种类,当cell滚出屏幕时,会将滚出屏幕的单元格放入重用的queue中，当某个未在屏幕上的单元格要显示的时候，就从这个queue中取出单元格进行重用。
+
+### 但对于多变的自定义cell，有时这种重用机制会出错。比如，当一个cell含有一个UITextField的子类并被放在重用queue中以待重用，这时如果一个未包含任何子视图的cell要显示在屏幕上，就会取出并使用这个重用的cell显示在无任何子视图的cell中，这时候就会出错。
+
+
+
